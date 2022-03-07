@@ -6,6 +6,8 @@
 // Creates a cached bitmap from a regular one
 std::shared_ptr<CachedBitmap> PNGLoader::createCachedBitmap(Bitmap *originalBitmap)
 {
+	if (!originalBitmap)
+		return nullptr;
 	Bitmap dummyBitmap(200, 200);
 	Graphics *dummyGraphics = Graphics::FromImage(&dummyBitmap);
 	return std::make_shared<CachedBitmap>(originalBitmap, dummyGraphics);
@@ -21,6 +23,8 @@ Bitmap *PNGLoader::loadScaledFromResource(int id, float scale)
 Bitmap *PNGLoader::loadScaledFromResource(int id, float xScale, float yScale)
 {
 	Bitmap *originalBitmap = loadFromResource(id);
+	if (!originalBitmap)
+		return nullptr;
 	float newWidth = xScale * (float) originalBitmap->GetWidth();
 	float newHeight = yScale * (float) originalBitmap->GetHeight();
 
