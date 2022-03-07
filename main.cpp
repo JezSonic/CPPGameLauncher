@@ -33,7 +33,7 @@ Main::Main(_In_ HINSTANCE hInstance,
 	initializeGraphics();
 
 	// Register the window class
-	WNDCLASSEXW wcex;
+	WNDCLASSEXW wcex = {0};
 	wcex.cbSize = sizeof(WNDCLASSEX);
 	wcex.style = CS_HREDRAW | CS_VREDRAW;
 	wcex.lpfnWndProc = _WndProc;
